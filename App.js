@@ -11,13 +11,12 @@ const Stack = createStackNavigator();
 
 const store = configureStore();
 
-
 export default function App(){
   return(
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Game">
-          <Stack.Screen name="눈송이 카드 맞추기 게임" component={GameScreen}>
+          <Stack.Screen name ="눈송이 카드 맞추기 게임" component={GameScreen}>
           </Stack.Screen>
           <Stack.Screen name="공대 학과 전체 보기" component={TotalCardScreen}>
           </Stack.Screen>
@@ -30,6 +29,6 @@ export default function App(){
 const styles = StyleSheet.create({
   mainContainer: {
     backgroundColor: 'rgba(211, 211, 211, 0.9)',
-    flex: 1,
-  },
+    flex: 1
+  }
 });
