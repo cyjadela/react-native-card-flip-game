@@ -2,17 +2,30 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import configureStore from './src/store/configureStore';
 import GameScreen from './src/components/screens/GameScreen';
-import { StyleSheet, SafeAreaView } from 'react-native';
+import { StyleSheet, SafeAreaView, Image ,Button,Text,View} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import TotalCardScreen from  './src/components/common/TotalCardScreen';
+
+const Stack = createStackNavigator();
 
 const store = configureStore();
 
-const App = () => (
-  <Provider store={store}>
-    <SafeAreaView style={styles.mainContainer}>
-      <GameScreen />
-    </SafeAreaView>
-  </Provider>
-);
+
+export default function App(){
+  return(
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Game">
+          <Stack.Screen name="눈송이 카드 맞추기 게임" component={GameScreen}>
+          </Stack.Screen>
+          <Stack.Screen name="공대 학과 전체 보기" component={TotalCardScreen}>
+          </Stack.Screen>
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
+  )
+}
 
 const styles = StyleSheet.create({
   mainContainer: {
@@ -20,5 +33,3 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
-
-export default App;
